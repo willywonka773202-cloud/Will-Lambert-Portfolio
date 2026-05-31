@@ -1,7 +1,8 @@
 import Link from "next/link";
-import type { Project } from "@/data/projects";
+import type { Project } from "@/data/types";
 import StatusBadge from "./StatusBadge";
 import TechTag from "./TechTag";
+import ProjectLogo from "./ProjectLogo";
 import { GitHubIcon, ExternalLinkIcon, ArrowRightIcon } from "./icons";
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -25,12 +26,19 @@ export default function ProjectDetail({ project }: { project: Project }) {
       </Link>
 
       <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-ink">{project.name}</h1>
-          <p className="mt-1 text-sm text-ink-faint">{project.category}</p>
+        <div className="flex items-center gap-4">
+          <ProjectLogo name={project.name} brand={project.brand} size="lg" />
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight text-ink">{project.name}</h1>
+            <p className="mt-1 text-sm text-ink-faint">{project.category}</p>
+          </div>
         </div>
         <StatusBadge status={project.status} />
       </div>
+
+      {project.tagline && (
+        <p className="mt-5 text-lg leading-relaxed text-ink-muted">{project.tagline}</p>
+      )}
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <a

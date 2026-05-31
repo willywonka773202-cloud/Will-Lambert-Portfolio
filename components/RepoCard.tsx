@@ -1,13 +1,14 @@
 import Link from "next/link";
-import type { Repo } from "@/data/repos";
+import type { Repo } from "@/data/types";
+import ProjectLogo from "./ProjectLogo";
 import { GitHubIcon, ExternalLinkIcon, WarningIcon, ArrowRightIcon } from "./icons";
 
 export default function RepoCard({ repo }: { repo: Repo }) {
   return (
-    <article className="flex flex-col rounded-xl border border-base-700/70 bg-base-850/80 p-5 shadow-card">
+    <article className="card-hover flex flex-col rounded-2xl border border-base-700/70 bg-base-850/80 p-5 shadow-card hover:border-base-600 hover:shadow-lift">
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <GitHubIcon className="h-4 w-4 text-ink-faint" />
+        <div className="flex items-center gap-2.5">
+          <ProjectLogo name={repo.name} size="sm" />
           <h3 className="font-mono text-sm font-semibold text-ink">{repo.name}</h3>
         </div>
         <span className="rounded-full border border-base-600/70 px-2 py-0.5 text-[10px] uppercase tracking-wide text-ink-faint">

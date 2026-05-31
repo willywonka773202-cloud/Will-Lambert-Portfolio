@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPortfolio } from "@/lib/portfolio";
 import VercelProjectCard from "@/components/VercelProjectCard";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { VercelIcon, WarningIcon } from "@/components/icons";
 
 export const revalidate = 86400;
@@ -29,8 +30,10 @@ export default async function LiveAppsPage() {
           <h2 className="text-lg font-semibold text-ink">Primary deployments</h2>
         </div>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {primary.map((p) => (
-            <VercelProjectCard key={p.name} project={p} />
+          {primary.map((p, i) => (
+            <Reveal key={p.name} delay={(i % 3) * 90}>
+              <VercelProjectCard project={p} />
+            </Reveal>
           ))}
         </div>
       </section>

@@ -1,14 +1,18 @@
 import Link from "next/link";
-import type { VercelProject } from "@/data/vercelProjects";
+import type { VercelProject } from "@/data/types";
+import ProjectLogo from "./ProjectLogo";
 import { VercelIcon, ExternalLinkIcon, WarningIcon, ArrowRightIcon } from "./icons";
 
 export default function VercelProjectCard({ project }: { project: VercelProject }) {
   return (
-    <article className="flex flex-col rounded-xl border border-base-700/70 bg-base-850/80 p-5 shadow-card">
+    <article className="card-hover flex flex-col rounded-2xl border border-base-700/70 bg-base-850/80 p-5 shadow-card hover:border-base-600 hover:shadow-lift">
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <VercelIcon className="h-3.5 w-3.5 text-ink" />
-          <h3 className="font-mono text-sm font-semibold text-ink">{project.name}</h3>
+        <div className="flex items-center gap-2.5">
+          <ProjectLogo name={project.name} size="sm" />
+          <h3 className="inline-flex items-center gap-1.5 font-mono text-sm font-semibold text-ink">
+            <VercelIcon className="h-3 w-3 text-ink-faint" />
+            {project.name}
+          </h3>
         </div>
         {project.verified ? (
           <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-emerald-300 ring-1 ring-inset ring-emerald-500/30">

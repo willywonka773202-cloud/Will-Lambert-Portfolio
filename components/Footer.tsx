@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-base-700/60 bg-base-950/60">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
         <div>
-          <p className="text-sm font-semibold text-ink">Lambert Labs</p>
+          <p className="text-sm font-semibold text-ink">Will Lambert · Portfolio</p>
           <p className="mt-1 text-xs text-ink-faint">
             Real apps, experiments, and deployments — from GitHub and Vercel.
           </p>

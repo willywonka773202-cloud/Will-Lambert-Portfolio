@@ -23,13 +23,18 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-base-700/60 bg-base-950/80 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="grid h-7 w-7 place-items-center rounded-md bg-accent/15 text-sm font-bold text-accent ring-1 ring-inset ring-accent/30">
-            L
+        <Link
+          href="/"
+          className="group flex items-center gap-2.5"
+          onClick={() => setOpen(false)}
+        >
+          <span className="relative grid h-8 w-8 place-items-center overflow-hidden rounded-lg bg-gradient-to-br from-accent to-accent-glow shadow-[0_6px_18px_-8px_rgba(16,185,129,0.8)] ring-1 ring-inset ring-white/20">
+            <span className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/30 to-transparent opacity-70" />
+            <svg viewBox="0 0 24 24" className="relative h-4 w-4 text-base-950" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 18V8l6 5 4-7 6 12" />
+            </svg>
           </span>
-          <span className="text-sm font-semibold tracking-tight text-ink">
-            Lambert Labs
-          </span>
+          <span className="text-sm font-semibold tracking-tight text-ink">Portfolio</span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

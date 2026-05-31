@@ -20,17 +20,114 @@ body {
   color: #f0fdf4;
 }
 
-/* Subtle ambient grid + glow behind the page content. */
+/* ---- Scroll reveal (driven by components/Reveal.tsx) ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Gradient text accent ---- */
+.text-gradient {
+  background: linear-gradient(100deg, #6ee7b7 0%, #34d399 35%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Ambient aurora + grid behind the page ---- */
 .page-aura {
   position: relative;
+  isolation: isolate;
 }
 .page-aura::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background:
-    radial-gradient(60% 50% at 50% -10%, rgba(16, 185, 129, 0.12), transparent 60%),
-    radial-gradient(40% 40% at 90% 10%, rgba(56, 189, 248, 0.08), transparent 60%);
+    radial-gradient(60% 50% at 50% -10%, rgba(16, 185, 129, 0.14), transparent 60%),
+    radial-gradient(45% 40% at 88% 8%, rgba(56, 189, 248, 0.1), transparent 60%),
+    radial-gradient(40% 45% at 10% 30%, rgba(139, 92, 246, 0.08), transparent 60%);
   pointer-events: none;
+}
+.page-aura::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+
+/* ---- Floating blobs used in the hero ---- */
+.aura-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ---- Card hover lift ---- */
+.card-hover {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* ---- Sheen sweep on buttons / featured cards ---- */
+.sheen {
+  position: relative;
+  overflow: hidden;
+}
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.14) 48%,
+    transparent 66%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+.sheen:hover::after {
+  transform: translateX(120%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

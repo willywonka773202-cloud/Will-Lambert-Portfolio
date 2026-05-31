@@ -1,5 +1,13 @@
 export type ProjectStatus = "Live" | "In Progress" | "Prototype" | "Needs Review";
 
+/** Brand colors for a project's generated logo tile. */
+export interface Brand {
+  from: string;
+  to: string;
+  /** Optional short glyph (1-2 chars). Defaults to a monogram of the name. */
+  glyph?: string;
+}
+
 export interface ProjectDetail {
   what: string;
   why: string;
@@ -12,6 +20,9 @@ export interface Project {
   slug: string;
   name: string;
   description: string;
+  /** Punchy one-liner used as a sales-style subtitle on cards and detail pages. */
+  tagline?: string;
+  brand?: Brand;
   status: ProjectStatus;
   category: string;
   github: string;

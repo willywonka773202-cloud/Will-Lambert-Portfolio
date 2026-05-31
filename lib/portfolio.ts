@@ -64,6 +64,8 @@ function toProject(repo: GhRepo): Project {
     slug: repo.name,
     name: override?.name ?? repo.name,
     description,
+    tagline: override?.tagline,
+    brand: override?.brand,
     status,
     category: override?.category ?? (repo.language ? `${repo.language} project` : "Project"),
     github: repo.full_name,

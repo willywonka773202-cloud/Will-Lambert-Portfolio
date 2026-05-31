@@ -3,6 +3,7 @@ import { getPortfolio } from "@/lib/portfolio";
 import { OWNER } from "@/data/config";
 import RepoCard from "@/components/RepoCard";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { GitHubIcon, WarningIcon } from "@/components/icons";
 
 export const revalidate = 86400;
@@ -37,8 +38,10 @@ export default async function GitHubPage() {
       <section className="mt-10">
         <h2 className="text-lg font-semibold text-ink">Active repositories</h2>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {verifiedRepos.map((repo) => (
-            <RepoCard key={repo.fullName} repo={repo} />
+          {verifiedRepos.map((repo, i) => (
+            <Reveal key={repo.fullName} delay={(i % 3) * 90}>
+              <RepoCard repo={repo} />
+            </Reveal>
           ))}
         </div>
       </section>
@@ -57,8 +60,10 @@ export default async function GitHubPage() {
             </div>
           </div>
           <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {reviewRepos.map((repo) => (
-              <RepoCard key={repo.fullName} repo={repo} />
+            {reviewRepos.map((repo, i) => (
+              <Reveal key={repo.fullName} delay={(i % 3) * 90}>
+                <RepoCard repo={repo} />
+              </Reveal>
             ))}
           </div>
         </section>
