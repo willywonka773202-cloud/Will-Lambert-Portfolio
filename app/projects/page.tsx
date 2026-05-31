@@ -3,6 +3,7 @@ import { getPortfolio } from "@/lib/portfolio";
 import ProjectGrid from "@/components/ProjectGrid";
 import RepoCard from "@/components/RepoCard";
 import PageHeader from "@/components/PageHeader";
+import Reveal from "@/components/Reveal";
 import { WarningIcon } from "@/components/icons";
 
 export const revalidate = 86400;
@@ -41,8 +42,10 @@ export default async function ProjectsPage() {
           </p>
 
           <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {reviewRepos.map((repo) => (
-              <RepoCard key={repo.fullName} repo={repo} />
+            {reviewRepos.map((repo, i) => (
+              <Reveal key={repo.fullName} delay={(i % 3) * 90}>
+                <RepoCard repo={repo} />
+              </Reveal>
             ))}
           </div>
         </section>

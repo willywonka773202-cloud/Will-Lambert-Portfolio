@@ -5,12 +5,11 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Lambert Labs — Will Lambert",
-    template: "%s · Lambert Labs",
+    default: "Will Lambert — Portfolio",
+    template: "%s · Portfolio",
   },
   description:
     "A portfolio of real apps, experiments, and deployments from Will Lambert's GitHub and Vercel.",
-  metadataBase: new URL("https://lambert-labs.vercel.app"),
 };
 
 export default function RootLayout({

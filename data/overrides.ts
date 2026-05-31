@@ -16,6 +16,8 @@ export type ProjectOverride = Partial<
 export const projectOverrides: Record<string, ProjectOverride> = {
   sylistly: {
     name: "Sylistly",
+    tagline: "Your closet, curated — outfit inspiration that's ready to wear.",
+    brand: { from: "#fb7185", to: "#a855f7" },
     description:
       "Fashion/outfit app with a closet flow, catalog expansion, and product-focused UI work.",
     status: "In Progress",
@@ -47,6 +49,8 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   },
   "bertos-ai-os": {
     name: "BertOS — AI OS",
+    tagline: "One command center for every AI model, agent, and automation.",
+    brand: { from: "#34d399", to: "#06b6d4" },
     description:
       "Personal AI operating system / command center with AI creation workflows and Hermes provider integration.",
     status: "In Progress",
@@ -79,6 +83,8 @@ export const projectOverrides: Record<string, ProjectOverride> = {
   },
   "carpool-optimizer": {
     name: "Carpool Optimizer",
+    tagline: "The fastest drop-off order, shared in a tap.",
+    brand: { from: "#38bdf8", to: "#6366f1" },
     description:
       "Route-planning / carpool app with shareable route links and copyable route itineraries.",
     status: "Prototype",
@@ -110,8 +116,33 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       ],
     },
   },
+  "deerfield-aquatics-schedule": {
+    name: "Deerfield Aquatics Schedule",
+    tagline: "Scheduling for Deerfield aquatics, in a clean TypeScript web app.",
+    brand: { from: "#22d3ee", to: "#3b82f6" },
+    description:
+      "Scheduling app for Deerfield aquatics — a TypeScript web app in active development.",
+    status: "In Progress",
+    category: "Utility / Scheduling / Web App",
+    techStack: ["TypeScript"],
+    featured: false,
+    detail: {
+      what:
+        "A scheduling app for Deerfield aquatics, built as a TypeScript web app. The repository is public and under active development.",
+      why:
+        "Built to make aquatics scheduling easier to organize and share.",
+      features: [],
+      learned: [],
+      next: [
+        "Publish a live deployment",
+        "Write up the full feature set and a case study",
+      ],
+    },
+  },
   "vibe-coding-platform": {
     name: "Vibe Coding Platform",
+    tagline: "A coding/productivity platform, wired to GitHub and Vercel.",
+    brand: { from: "#a78bfa", to: "#ec4899" },
     description:
       "Coding/productivity platform project connected to GitHub and Vercel. Repository is private and currently empty — under review.",
     status: "Needs Review",
