@@ -1,0 +1,42 @@
+name: Refresh portfolio from GitHub
+
+# Keeps the committed repo snapshot in sync with the GitHub account so the
+# portfolio auto-detects new apps without any manual edits. The live site also
+# revalidates daily on its own (ISR); this workflow refreshes the offline
+# fallback and pushes a commit so a redeploy picks up changes promptly.
+
+on:
+  schedule:
+    - cron: "0 7 * * *" # daily at 07:00 UTC
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Refresh snapshot from GitHub
+        env:
+          # Uses the built-in token; covers the account's public repos.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/refresh-snapshot.mjs
+
+      - name: Commit changes if the repo list changed
+        run: |
+          if [[ -n "$(git status --porcelain data/snapshot.ts)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/snapshot.ts
+            git commit -m "chore: refresh portfolio snapshot from GitHub"
+            git push
+          else
+            echo "No changes — snapshot already up to date."
+          fi
