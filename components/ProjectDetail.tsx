@@ -63,9 +63,15 @@ export default function ProjectDetail({ project }: { project: Project }) {
         ))}
       </div>
 
-      <Section title="What it does">{d.what}</Section>
+      {project.autoDetected && (
+        <div className="mt-6 rounded-lg border border-base-700/60 bg-base-850/60 p-3 text-xs text-ink-faint">
+          Auto-detected from GitHub. A full case study for this project is on the way.
+        </div>
+      )}
 
-      <Section title="Why I built it">{d.why}</Section>
+      {d.what && <Section title="What it does">{d.what}</Section>}
+
+      {d.why && <Section title="Why I built it">{d.why}</Section>}
 
       {d.features.length > 0 && (
         <Section title="Main features">

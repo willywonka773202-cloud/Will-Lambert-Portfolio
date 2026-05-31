@@ -1,17 +1,21 @@
 import Link from "next/link";
-import { featuredProjects } from "@/data/projects";
-import { verifiedRepos } from "@/data/repos";
-import { primaryVercelProjects } from "@/data/vercelProjects";
+import { getPortfolio } from "@/lib/portfolio";
 import ProjectGrid from "@/components/ProjectGrid";
 import { GitHubIcon, ExternalLinkIcon, ArrowRightIcon, VercelIcon } from "@/components/icons";
 
-const stats = [
-  { label: "Featured projects", value: String(featuredProjects.length) },
-  { label: "Live deployments", value: String(primaryVercelProjects.length) },
-  { label: "Active repos", value: String(verifiedRepos.length) },
-];
+export const revalidate = 86400;
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { featured, projects, counts } = await getPortfolio();
+  // Fall back to the most recent projects if nothing is curated as featured.
+  const showcase = (featured.length > 0 ? featured : projects).slice(0, 4);
+
+  const stats = [
+    { label: "Projects tracked", value: String(counts.projects) },
+    { label: "Live deployments", value: String(counts.live) },
+    { label: "Repos detected", value: String(counts.repos) },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6">
       {/* Hero */}
@@ -25,7 +29,8 @@ export default function HomePage() {
           I build and ship apps, AI tools, and product systems.
         </h1>
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-muted">
-          A portfolio of real apps, experiments, and deployments from my GitHub and Vercel.
+          A portfolio of real apps, experiments, and deployments from my GitHub and Vercel —
+          synced automatically from my GitHub account.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -86,7 +91,7 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6">
-          <ProjectGrid projects={featuredProjects} />
+          <ProjectGrid projects={showcase} />
         </div>
       </section>
     </div>

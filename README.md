@@ -16,13 +16,36 @@ grounded in real repository names and verified live-app content.
 - **Live Apps** — verified Vercel deployments (duplicates kept separate)
 - **About** / **Contact**
 
-## Data is the source of truth
+## Auto-syncs from GitHub — no manual editing
 
-All content lives in typed data files so the portfolio stays grounded and easy to update:
+The portfolio generates itself from my GitHub account. Create a new repo (or
+ship a deployment) and it shows up on its own:
 
-- `data/projects.ts` — featured/case-study projects
-- `data/repos.ts` — real GitHub repositories
-- `data/vercelProjects.ts` — Vercel deployments and their GitHub matches
+- **Live fetch + daily ISR** — pages fetch the repo list from the GitHub API and
+  revalidate every 24h (`lib/github.ts`, `lib/portfolio.ts`). New repos appear
+  automatically; deployed repos (those with a published URL) land on **Live Apps**.
+- **Daily refresh workflow** — `.github/workflows/refresh-portfolio.yml` runs
+  `scripts/refresh-snapshot.mjs` once a day to refresh the committed fallback and
+  trigger a redeploy.
+- **Always-on fallback** — if the GitHub API is rate-limited or down, the site
+  serves the committed snapshot (`data/snapshot.ts`) so it never breaks.
+
+### Curation, kept simple
+
+Auto-detection stays grounded via small, typed config files — you rarely touch them:
+
+- `data/config.ts` — owner, inclusion rules (hash-named, forked, archived, and
+  denylisted repos are filtered out), private-repo seeds, and Vercel extras
+- `data/overrides.ts` — per-repo overrides: verified descriptions, featured flags,
+  status, tech stack, and case-study detail. Add an entry to promote a freshly
+  detected repo to a featured, fully written-up project.
+- `data/snapshot.ts` — auto-generated offline fallback (don't edit by hand)
+
+### Optional: `GITHUB_TOKEN`
+
+Works out of the box on public repos. Set `GITHUB_TOKEN` (a fine-grained PAT) in
+your Vercel/GitHub env to raise the rate limit and include private repos — they
+appear under **Needs Review** automatically.
 
 ## Reusable components
 
@@ -37,6 +60,8 @@ npm run dev        # http://localhost:3000
 npm run typecheck  # tsc --noEmit
 npm run lint       # next lint
 npm run build      # production build
+
+node scripts/refresh-snapshot.mjs  # refresh the GitHub snapshot manually
 ```
 
 ## Verified live apps

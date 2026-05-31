@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
-import {
-  primaryVercelProjects,
-  reviewVercelProjects,
-  duplicateVercelProjects,
-} from "@/data/vercelProjects";
+import { getPortfolio } from "@/lib/portfolio";
 import VercelProjectCard from "@/components/VercelProjectCard";
 import PageHeader from "@/components/PageHeader";
 import { VercelIcon, WarningIcon } from "@/components/icons";
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Live Apps",
   description: "Working Vercel deployments mapped to their GitHub repos.",
 };
 
-export default function LiveAppsPage() {
+export default async function LiveAppsPage() {
+  const { vercel } = await getPortfolio();
+  const { primary, review, duplicate } = vercel;
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <PageHeader
         eyebrow="Deployments"
         title="Live Apps"
-        description="Production Vercel deployments, each matched to its GitHub repo. The primary apps below were confirmed reachable as working pages."
+        description="Production deployments, detected automatically from each repo's published URL and matched to its GitHub repo."
       />
 
       <section className="mt-8">
@@ -28,13 +29,13 @@ export default function LiveAppsPage() {
           <h2 className="text-lg font-semibold text-ink">Primary deployments</h2>
         </div>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {primaryVercelProjects.map((p) => (
+          {primary.map((p) => (
             <VercelProjectCard key={p.name} project={p} />
           ))}
         </div>
       </section>
 
-      {reviewVercelProjects.length > 0 && (
+      {review.length > 0 && (
         <section className="mt-12">
           <div className="flex items-center gap-2">
             <WarningIcon className="h-5 w-5 text-amber-400" />
@@ -45,14 +46,14 @@ export default function LiveAppsPage() {
             usable live apps.
           </p>
           <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {reviewVercelProjects.map((p) => (
+            {review.map((p) => (
               <VercelProjectCard key={p.name} project={p} />
             ))}
           </div>
         </section>
       )}
 
-      {duplicateVercelProjects.length > 0 && (
+      {duplicate.length > 0 && (
         <section className="mt-12">
           <h2 className="text-lg font-semibold text-ink">Duplicate &amp; preview deployments</h2>
           <p className="mt-2 max-w-2xl text-sm text-ink-muted">
@@ -61,7 +62,7 @@ export default function LiveAppsPage() {
             projects.
           </p>
           <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {duplicateVercelProjects.map((p) => (
+            {duplicate.map((p) => (
               <VercelProjectCard key={p.name} project={p} />
             ))}
           </div>

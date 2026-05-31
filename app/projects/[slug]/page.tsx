@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects, getProject } from "@/data/projects";
+import { getProject, getProjectSlugs } from "@/lib/portfolio";
 import ProjectDetail from "@/components/ProjectDetail";
 
-export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+export const revalidate = 86400;
+// Allow detail pages for repos detected after the last build to render on demand.
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const slugs = await getProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const project = getProject(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const project = await getProject(params.slug);
   if (!project) return { title: "Project not found" };
   return {
     title: project.name,
@@ -16,8 +25,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
-  const project = getProject(params.slug);
+export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
+  const project = await getProject(params.slug);
   if (!project) notFound();
 
   return (
