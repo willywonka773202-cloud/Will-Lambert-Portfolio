@@ -18,14 +18,19 @@ live apps. **Re-verify before shipping — repos change.**
 | Repo | Lang | Live URL | Notes |
 | --- | --- | --- | --- |
 | `sylistly` | TypeScript | https://sylistly.vercel.app | Fashion/outfit curation: themed outfit boards, filters (style/occasion/gender), per-piece breakdown w/ cost, Feed/Swipe/Build/Discover/Saved/Profile nav |
-| `bertos-ai-os` | TypeScript | https://bertos-ai-os.vercel.app | Local-first AI OS dashboard: Oracle Channel (route prompts to Claude/Codex/Ollama/Gemini/Hermes), Mission Control, Provider Pantheon, Autopilot, Agent Legion |
-| `bertos-v2` | TypeScript | https://bertos-v2.vercel.app | Newer BertOS — build automation + code editing, chat/voice, workspace/project mgmt, memory brain, multi-provider AI, task scheduling, Telegram integration |
+| `bertos-v2` | TypeScript | https://bertos-v2.vercel.app | **Primary/featured BertOS.** Build automation + code editing, chat/voice, workspace/project mgmt, memory brain, multi-provider AI (Claude/Gemini/Codex), task scheduling, Telegram integration. Motto: "Aequanimitas. Calm, stable, honest." |
 | `carpool-optimizer` | TypeScript | https://carpool-optimizer-five.vercel.app | Carpool drop-off route planner: route personality (Fastest/Balanced/Alternate), avoidances, riders/stops, driver+seat assignment, repeat scheduling, pre-drive checklist, shareable links |
+| `bertos-ai-os` | TypeScript | https://bertos-ai-os.vercel.app | **BertOS v1 prototype** — predecessor to `bertos-v2`. Local-first AI OS dashboard (Oracle Channel, Mission Control, Provider Pantheon, Autopilot, Agent Legion). Listed but **not featured**; framed only as the earlier prototype. |
 
 > Note: `carpool-optimizer`'s production alias is `carpool-optimizer-five.vercel.app`.
 > `bertos-v2` was **auto-detected by the daily refresh workflow** — proof the
-> auto-sync works. Decide whether `bertos-v2` supersedes `bertos-ai-os` as the
-> featured BertOS, or feature both.
+> auto-sync works.
+>
+> **BertOS decision (done):** `bertos-v2` is the featured/primary BertOS.
+> `bertos-ai-os` stays listed (it's real and live) but is **not** featured — it's
+> presented only as the earlier v1 prototype/predecessor. This is implemented via
+> `data/overrides.ts` (`bertos-v2` `featured: true`; `bertos-ai-os` `featured: false`,
+> status `Prototype`) and the `featuredOrder` in `lib/portfolio.ts`.
 
 ### Real but not finished — keep honest
 | Repo | Lang | Visibility | Status to show | Why |
@@ -121,6 +126,5 @@ node scripts/refresh-snapshot.mjs   # refresh GitHub snapshot (honors GITHUB_TOK
 
 ## 9. Known follow-ups / ideas
 - Real screenshots/OG images for live apps instead of placeholder tiles.
-- Decide `bertos-v2` vs `bertos-ai-os` featuring.
 - Project filtering/search; richer grounded case studies; a11y + Lighthouse pass;
   CI (typecheck/lint/build) on PRs.

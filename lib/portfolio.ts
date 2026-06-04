@@ -138,7 +138,7 @@ export async function getPortfolio(): Promise<Portfolio> {
   }
 
   // Featured first (in a stable, curated order), then everything else.
-  const featuredOrder = ["sylistly", "bertos-ai-os", "carpool-optimizer"];
+  const featuredOrder = ["sylistly", "bertos-v2", "carpool-optimizer"];
   projects.sort((a, b) => {
     const ai = a.featured ? featuredOrder.indexOf(a.slug) : Infinity;
     const bi = b.featured ? featuredOrder.indexOf(b.slug) : Infinity;
