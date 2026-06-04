@@ -46,9 +46,13 @@ The site auto-detects new apps from GitHub so it stays current with zero manual 
 ## The real projects (verified — confirm again live before shipping)
 **Live, working apps (verified reachable):**
 - `sylistly` — fashion/outfit curation app — https://sylistly.vercel.app
-- `bertos-ai-os` — local-first AI operating system dashboard — https://bertos-ai-os.vercel.app
-- `bertos-v2` — newer BertOS (build automation, chat/voice, memory, multi-provider AI, Telegram) — https://bertos-v2.vercel.app
+- `bertos-v2` — **the primary/featured BertOS** (build automation, chat/voice, memory, multi-provider AI, Telegram) — https://bertos-v2.vercel.app
 - `carpool-optimizer` — carpool drop-off route planner — https://carpool-optimizer-five.vercel.app
+- `bertos-ai-os` — the **earlier BertOS v1 prototype**, predecessor to `bertos-v2`. Keep it listed (it's real and live) but **do NOT feature it** as a separate showcase — present it only as the prototype that led to BertOS v2 — https://bertos-ai-os.vercel.app
+
+> **BertOS decision (already made — implement, don't re-ask):** Feature `bertos-v2`
+> as the primary BertOS. Do not feature `bertos-ai-os` separately; mention it only as
+> the earlier predecessor/prototype where helpful.
 
 **Real but not finished (keep honest / "Needs Review" or "In Progress"):**
 - `deerfield-aquatics-schedule` — public TypeScript scheduling app, no deployment yet

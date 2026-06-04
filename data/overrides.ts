@@ -47,22 +47,58 @@ export const projectOverrides: Record<string, ProjectOverride> = {
       ],
     },
   },
-  "bertos-ai-os": {
-    name: "BertOS — AI OS",
-    tagline: "One command center for every AI model, agent, and automation.",
+  "bertos-v2": {
+    name: "BertOS v2",
+    tagline: "Aequanimitas — a calm, honest command center for building with AI.",
     brand: { from: "#34d399", to: "#06b6d4" },
     description:
-      "Personal AI operating system / command center with AI creation workflows and Hermes provider integration.",
+      "Current-generation personal AI operating system: build automation with in-app code editing, chat/voice control, a persistent memory brain, and routing across multiple AI providers.",
     status: "In Progress",
     category: "AI / Developer Tools / Automation",
     techStack: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Vercel"],
-    liveUrl: "https://bertos-ai-os.vercel.app",
+    liveUrl: "https://bertos-v2.vercel.app",
     featured: true,
     detail: {
       what:
-        "BertOS is a local-first AI operating system dashboard — a \"command center\" for managing AI workflows and providers. It routes prompts across multiple models and tracks objectives, automations, and agent roles from a single cockpit-style interface.",
+        "BertOS v2 is the current generation of Will's personal AI operating system — a calm, honest command center for building and automating with AI. It pairs build automation and in-app code editing with chat and voice control, a persistent memory brain, and prompt routing across multiple AI providers, all under the motto \"Aequanimitas. Calm, stable, honest.\"",
       why:
-        "Built to centralize day-to-day AI work — model routing, task tracking, and automation — into one transparent control surface instead of scattered tabs and tools.",
+        "Built as the successor to the original BertOS (bertos-ai-os) — taking the command-center idea much further with real build automation, voice, persistent memory, and outside integrations.",
+      features: [
+        "Build automation with in-app code editing",
+        "Chat and voice interfaces for driving the system",
+        "Workspace and project management",
+        "Memory brain for retaining context across sessions",
+        "Multi-provider AI routing (Claude, Gemini, Codex)",
+        "Automation and task scheduling",
+        "Connector support with usage tracking",
+        "Telegram integration",
+      ],
+      learned: [
+        "Evolving a prototype command center into a dependable, build-capable system",
+        "Designing a calm, honest UI that stays trustworthy as capability grows",
+      ],
+      next: [
+        "Deepen the memory brain and connector ecosystem",
+        "Harden build automation and usage/cost tracking",
+      ],
+    },
+  },
+  "bertos-ai-os": {
+    name: "BertOS (AI OS) — v1 prototype",
+    tagline: "The original BertOS prototype — the command center that led to BertOS v2.",
+    brand: { from: "#64748b", to: "#0e7490" },
+    description:
+      "The earlier prototype of the BertOS AI operating system — a local-first command center for routing prompts and managing AI workflows. Succeeded by BertOS v2.",
+    status: "Prototype",
+    category: "AI / Developer Tools / Automation",
+    techStack: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Vercel"],
+    liveUrl: "https://bertos-ai-os.vercel.app",
+    featured: false,
+    detail: {
+      what:
+        "The first version of BertOS — a local-first AI operating system dashboard and \"command center\" for managing AI workflows and providers. It routed prompts across multiple models and tracked objectives, automations, and agent roles from a single cockpit-style interface. It's the prototype that the current BertOS v2 grew out of.",
+      why:
+        "Built to centralize day-to-day AI work into one transparent control surface — and to prove out the command-center idea that's now carried forward, much further, in BertOS v2.",
       features: [
         "Oracle Channel — route prompts to providers (Claude, Codex, Ollama, Gemini, Hermes)",
         "Mission Control — objective and task tracking with XP-based progression",
@@ -72,12 +108,11 @@ export const projectOverrides: Record<string, ProjectOverride> = {
         "Agent Legion — role-based AI agent team assignments",
       ],
       learned: [
-        "Designing an honest UI that surfaces what's working vs. what needs setup (\"Daemon offline\", \"needs setup\")",
+        "Designing an honest UI that surfaces what's working vs. what needs setup",
         "Abstracting multiple AI providers behind one routing surface",
       ],
       next: [
-        "Verified local bridge / daemon onboarding flow",
-        "Persisting Mission Control state and provider credentials",
+        "Superseded by BertOS v2 — see that project for the current direction",
       ],
     },
   },
