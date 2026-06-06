@@ -31,9 +31,9 @@ export default async function ProjectsPage() {
       {/* Needs Review */}
       {reviewRepos.length > 0 && (
         <section className="mt-16">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <WarningIcon className="h-5 w-5 text-amber-400" />
-            <h2 className="text-xl font-bold tracking-tight text-ink">Needs Review</h2>
+            <h2 className="display-tight text-3xl text-ink">Needs Review</h2>
           </div>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
             Real repositories under my account that aren&apos;t presented as finished apps yet —

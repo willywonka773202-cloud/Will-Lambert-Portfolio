@@ -25,9 +25,9 @@ export default async function LiveAppsPage() {
       />
 
       <section className="mt-8">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <VercelIcon className="h-4 w-4 text-ink" />
-          <h2 className="text-lg font-semibold text-ink">Primary deployments</h2>
+          <h2 className="display-tight text-3xl text-ink">Primary deployments</h2>
         </div>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {primary.map((p, i) => (
@@ -40,9 +40,9 @@ export default async function LiveAppsPage() {
 
       {review.length > 0 && (
         <section className="mt-12">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <WarningIcon className="h-5 w-5 text-amber-400" />
-            <h2 className="text-lg font-semibold text-ink">Unverified deployments</h2>
+            <h2 className="display-tight text-3xl text-ink">Unverified deployments</h2>
           </div>
           <p className="mt-2 max-w-2xl text-sm text-ink-muted">
             Real Vercel projects whose source repos are empty or private — not yet confirmed as
@@ -58,7 +58,7 @@ export default async function LiveAppsPage() {
 
       {duplicate.length > 0 && (
         <section className="mt-12">
-          <h2 className="text-lg font-semibold text-ink">Duplicate &amp; preview deployments</h2>
+          <h2 className="display-tight text-3xl text-ink">Duplicate &amp; preview deployments</h2>
           <p className="mt-2 max-w-2xl text-sm text-ink-muted">
             Extra Vercel projects that map to an existing app or have no clear GitHub match. Kept
             out of the main list so the portfolio doesn&apos;t show confusing duplicates as primary
