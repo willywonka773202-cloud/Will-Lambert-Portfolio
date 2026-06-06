@@ -8,13 +8,15 @@ export default function PageHeader({
   description?: string;
 }) {
   return (
-    <div className="border-b border-base-700/60 pb-8">
-      {eyebrow && (
-        <p className="text-xs font-medium uppercase tracking-wide text-accent">{eyebrow}</p>
-      )}
-      <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h1>
+    <div className="relative border-b border-base-700/50 pb-10">
+      {eyebrow && <p className="kicker animate-fade-up text-gold">{eyebrow}</p>}
+      <h1 className="mt-4 animate-fade-up display-tight text-5xl text-ink [animation-delay:80ms] sm:text-6xl">
+        {title}
+      </h1>
       {description && (
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-ink-muted">{description}</p>
+        <p className="mt-5 max-w-2xl animate-fade-up text-lg leading-relaxed text-ink-muted [animation-delay:160ms]">
+          {description}
+        </p>
       )}
     </div>
   );

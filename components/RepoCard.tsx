@@ -5,7 +5,7 @@ import { GitHubIcon, ExternalLinkIcon, WarningIcon, ArrowRightIcon } from "./ico
 
 export default function RepoCard({ repo }: { repo: Repo }) {
   return (
-    <article className="card-hover flex flex-col rounded-2xl border border-base-700/70 bg-base-850/80 p-5 shadow-card hover:border-base-600 hover:shadow-lift">
+    <article className="card-hover flex flex-col rounded-2xl border border-base-700/70 bg-gradient-to-b from-base-850/90 to-base-900/80 p-5 shadow-card backdrop-blur-sm hover:border-gold/30 hover:shadow-lift">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <ProjectLogo name={repo.name} size="sm" />

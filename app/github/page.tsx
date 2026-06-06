@@ -36,7 +36,7 @@ export default async function GitHubPage() {
       </div>
 
       <section className="mt-10">
-        <h2 className="text-lg font-semibold text-ink">Active repositories</h2>
+        <h2 className="display-tight text-3xl text-ink">Active repositories</h2>
         <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {verifiedRepos.map((repo, i) => (
             <Reveal key={repo.fullName} delay={(i % 3) * 90}>
